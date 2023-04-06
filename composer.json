@@ -1,0 +1,19 @@
+{
+    "name": "elmar_aliyev/phpmvc-framework",
+    "description": "Mvc Framework",
+    "type": "framework",
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpMvcFramework\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "ElmarAliyev-7",
+            "email": "liyevelmar02@gmail.com"
+        }
+    ]
+}
