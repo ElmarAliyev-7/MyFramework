@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'framework',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '005408cd32192747bc8567366c50d9ff10da1cb5',
         'name' => 'elmar_aliyev/phpmvc-framework',
         'dev' => true,
     ),
     'versions' => array(
         'elmar_aliyev/phpmvc-framework' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'framework',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '005408cd32192747bc8567366c50d9ff10da1cb5',
             'dev_requirement' => false,
         ),
         'graham-campbell/result-type' => array(
