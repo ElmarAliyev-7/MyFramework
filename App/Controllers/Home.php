@@ -6,6 +6,6 @@ class Home
 {
     public function index()
     {
-        return 'home controller index method';
+        return \route('user', [':id' => 3 , ':id2' => 4]);
     }
 }

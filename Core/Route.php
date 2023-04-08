@@ -6,6 +6,7 @@ class Route
 {
     public static array $routes = [];
     public static bool $hasRoute = false;
+    public static string $prefix = '';
 
     public static array $patterns = [
         ':id[0-9]?' => '([0-9]+)',
@@ -18,7 +19,7 @@ class Route
      */
     public static function get(string $path, $callback): Route
     {
-        self::$routes['get'][$path] = [
+        self::$routes['get'][self::$prefix . $path] = [
             'callback' => $callback
         ];
         return new self();
@@ -44,7 +45,7 @@ class Route
             foreach (self::$patterns as $key => $pattern) {
                 $path = preg_replace('#' . $key . '#', $pattern, $path);
             }
-
+            $path = self::$prefix . $path;
             $pattern = '#^' . $path . '$#';
             if(preg_match($pattern, $url, $params)){
 
@@ -93,13 +94,25 @@ class Route
     {
         $key = array_key_last(self::$routes['get']);
         self::$routes['get'][$key]['name'] = $name;
-     }
+    }
 
-     public static function url(string $name, array $params = [])
+     public static function url(string $name, array $params = []): string
      {
         $route = array_key_first(array_filter(self::$routes['get'], function() use ($name) {
             return $route['name'] = $name;
         }));
-        echo $route;
+        return str_replace(array_keys($params), array_values($params), $route);
+     }
+
+     public static function prefix($prefix): Route
+     {
+         self::$prefix = $prefix;
+         return new self();
+     }
+
+     public static function group(\Closure $closure): void
+     {
+         $closure();
+         self::$prefix = '';
      }
 }

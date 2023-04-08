@@ -5,7 +5,7 @@
         'type' => 'framework',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '005408cd32192747bc8567366c50d9ff10da1cb5',
+        'reference' => '5b2479817ef4ec74ef6d24db810f6e45ead846eb',
         'name' => 'elmar_aliyev/phpmvc-framework',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'framework',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '005408cd32192747bc8567366c50d9ff10da1cb5',
+            'reference' => '5b2479817ef4ec74ef6d24db810f6e45ead846eb',
             'dev_requirement' => false,
         ),
         'graham-campbell/result-type' => array(
