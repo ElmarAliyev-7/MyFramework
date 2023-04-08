@@ -2,10 +2,12 @@
 
 namespace PhpMvcFramework\App\Controllers;
 
+use PhpMvcFramework\Core\View;
+
 class Home
 {
     public function index()
     {
-        return \route('user', [':id' => 3 , ':id2' => 4]);
+        return View::show('index');
     }
 }

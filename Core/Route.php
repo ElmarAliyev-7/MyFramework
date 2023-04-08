@@ -2,6 +2,8 @@
 
 namespace PhpMvcFramework\Core;
 
+use PhpMvcFramework\Core\Helpers\Redirect;
+
 class Route
 {
     public static array $routes = [];
@@ -41,26 +43,29 @@ class Route
         $url = self::getUrl();
         $method = self::getMethod();
         foreach (self::$routes[$method] as $path => $props) {
-            $callback = $props['callback'];
             foreach (self::$patterns as $key => $pattern) {
                 $path = preg_replace('#' . $key . '#', $pattern, $path);
             }
-
             $pattern = '#^' . $path . '$#';
-            if(preg_match($pattern, $url, $params)){
 
+            if(preg_match($pattern, $url, $params)){
+                self::$hasRoute = true;
                 array_shift($params);
 
-                self::$hasRoute = true;
+                if(isset($props['redirect'])){
+                    Redirect::to($props['redirect'], $props['status']);
+                } else {
+                    $callback = $props['callback'];
 
-                if(is_callable($callback)) {
-                    echo call_user_func_array($callback, $params);
-                } elseif (is_string($callback)) {
+                    if(is_callable($callback)) {
+                        echo call_user_func_array($callback, $params);
+                    } elseif (is_string($callback)) {
 
-                    [$controllerName, $methodName] = explode('@', $callback);
-                    $controllerName = '\PhpMvcFramework\App\Controllers\\'. $controllerName;
-                    $controller = new $controllerName();
-                    echo call_user_func_array([$controller, $methodName], $params);
+                        [$controllerName, $methodName] = explode('@', $callback);
+                        $controllerName = '\PhpMvcFramework\App\Controllers\\'. $controllerName;
+                        $controller = new $controllerName();
+                        echo call_user_func_array([$controller, $methodName], $params);
+                    }
                 }
             }
         }
@@ -98,10 +103,10 @@ class Route
 
      public static function url(string $name, array $params = []): string
      {
-        $route = array_key_first(array_filter(self::$routes['get'], function() use ($name) {
-            return $route['name'] = $name;
-        }));
-        return str_replace(array_keys($params), array_values($params), $route);
+         $route = array_key_first(array_filter(self::$routes['get'], function ($route) use ($name) {
+             return isset($route['name']) && $route['name'] === $name;
+         }));
+        return str_replace(array_map(fn($key) => ':' . $key, array_keys($params)), array_values($params), $route);
      }
 
      public static function prefix($prefix): Route
@@ -114,5 +119,18 @@ class Route
      {
          $closure();
          self::$prefix = '';
+     }
+
+     public function where($key, $pattern)
+     {
+        self::$patterns[':' . $key] = '(' . $pattern . ')';
+     }
+
+     public static function redirect($from, $to, $status = 301)
+     {
+        self::$routes['get'][$from] = [
+            'redirect' => $to,
+            'status' => $status
+        ];
      }
 }

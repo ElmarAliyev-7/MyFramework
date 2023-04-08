@@ -2,22 +2,15 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use \PhpMvcFramework\Core\{App, Route};
+use PhpMvcFramework\Core\Route;
 
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
 $dotenv->load();
 
-Route::get('/', 'Home@index')->name('home');
+require __DIR__ . '/App/routes/web.php';
 
-Route::get('/user/:id/:id2', 'User@show')->name('user');
-
-Route::prefix('/admin')->group( function () {
-    Route::get('/?', function () {
-        return 'admin home page';
-    });
-    Route::get('/users', function () {
-        return 'admin users page';
-    });
-});
+Route::prefix('/api');
+require __DIR__ . '/App/routes/api.php';
+Route::$prefix = '';
 
 Route::dispatch();

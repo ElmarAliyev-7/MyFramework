@@ -1,5 +1,7 @@
 <?php
 
+use PhpMvcFramework\Core\{Route, View};
+
 /**
  * @param string $name
  *@param array $params
@@ -7,5 +9,15 @@
  */
 function route(string $name, array $params = []): string
 {
-    return \PhpMvcFramework\Core\Route::url($name, $params);
+    return Route::url($name, $params);
+}
+
+/**
+ * @param string $name
+ * @param array $data
+ * @return string
+ */
+function view(string $name, array $data = []): string
+{
+    return View::show($name, $data);
 }
