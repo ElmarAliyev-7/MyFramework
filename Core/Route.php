@@ -8,35 +8,41 @@ class Route
     public static bool $hasRoute = false;
 
     public static array $patterns = [
-        ':id' => '([0-9]+)',
-        ':url' => '([0-9a-zA-Z-_]+)'
+        ':id[0-9]?' => '([0-9]+)',
+        ':url[0-9]?' => '([0-9a-zA-Z-_]+)'
     ];
 
     /**
-     * @param $path
+     * @param string $path
      * @param $callback
      */
-    public static function get($path, $callback): void
+    public static function get(string $path, $callback): Route
     {
-        self::$routes['get'][$path] = $callback;
+        self::$routes['get'][$path] = [
+            'callback' => $callback
+        ];
+        return new self();
     }
 
     /**
-     * @param $path
+     * @param string $path
      * @param $callback
      */
-    public static function post($path, $callback): void
+    public static function post(string $path, $callback): void
     {
-        self::$routes['post'][$path] = $callback;
+        self::$routes['post'][$path] = [
+            'callback' => $callback
+        ];
     }
 
     public static function dispatch()
     {
         $url = self::getUrl();
         $method = self::getMethod();
-        foreach (self::$routes[$method] as $path => $callback) {
+        foreach (self::$routes[$method] as $path => $props) {
+            $callback = $props['callback'];
             foreach (self::$patterns as $key => $pattern) {
-                $path = str_replace($key, $pattern, $path);
+                $path = preg_replace('#' . $key . '#', $pattern, $path);
             }
 
             $pattern = '#^' . $path . '$#';
@@ -82,4 +88,18 @@ class Route
     {
         return str_replace(getenv('BASE_PATH'), null, $_SERVER['REQUEST_URI']);
     }
+
+    public function name(string $name): void
+    {
+        $key = array_key_last(self::$routes['get']);
+        self::$routes['get'][$key]['name'] = $name;
+     }
+
+     public static function url(string $name, array $params = [])
+     {
+        $route = array_key_first(array_filter(self::$routes['get'], function() use ($name) {
+            return $route['name'] = $name;
+        }));
+        echo $route;
+     }
 }

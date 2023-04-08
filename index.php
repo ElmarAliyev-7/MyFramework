@@ -7,20 +7,14 @@ use \PhpMvcFramework\Core\{App, Route};
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
 $dotenv->load();
 
-Route::get('/', 'Home@index');
+function route($name, $params = []) {
+    return Route::url($name, $params);
+}
 
-Route::get('users/:id', 'User@show');
+Route::get('/', 'Home@index')->name('home');
 
-Route::get('/user/:id', function ($id){
-    return 'user id = ' . $id;
-});
-
-Route::get('/users', function (){
-    return 'users page';
-});
-
-Route::post('/updateUser', function (){
-   return 'update user';
-});
+Route::get('/user/:id/:id2', 'User@show')->name('user');
+//Route::url('user', [':id' => 3]);
+//echo \route('user', [':id' => 4]);
 
 Route::dispatch();
