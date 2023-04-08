@@ -45,7 +45,7 @@ class Route
             foreach (self::$patterns as $key => $pattern) {
                 $path = preg_replace('#' . $key . '#', $pattern, $path);
             }
-            $path = self::$prefix . $path;
+
             $pattern = '#^' . $path . '$#';
             if(preg_match($pattern, $url, $params)){
 
