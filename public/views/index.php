@@ -1,3 +1,3 @@
 <?=view('layouts.header'); ?>
-Xoshgeldiniz , <?=$username;?>
+    Home Page
 <?=view('layouts.footer'); ?>

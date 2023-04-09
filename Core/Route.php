@@ -106,7 +106,7 @@ class Route
          $route = array_key_first(array_filter(self::$routes['get'], function ($route) use ($name) {
              return isset($route['name']) && $route['name'] === $name;
          }));
-        return str_replace(array_map(fn($key) => ':' . $key, array_keys($params)), array_values($params), $route);
+        return getenv('BASE_PATH') . str_replace(array_map(fn($key) => ':' . $key, array_keys($params)), array_values($params), $route);
      }
 
      public static function prefix($prefix): Route

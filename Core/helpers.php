@@ -21,3 +21,13 @@ function view(string $name, array $data = []): string
 {
     return View::show($name, $data);
 }
+
+/**
+ * @param string $name
+ * @param array $params
+ * @return string
+ */
+function url(string $name, array $params = []): string
+{
+    return Route::url($name, $params);
+}
