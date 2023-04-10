@@ -3,19 +3,19 @@
 namespace PhpMvcFramework\App\Controllers;
 
 use PhpMvcFramework\Core\View;
-use PhpMvcFramework\Core\Database;
+use PhpMvcFramework\Core\DB;
 
 class Blog
 {
     public function index()
     {
-        $blogs = Database::table('blogs')->get();
+        $blogs = DB::table('blogs')->get();
         return View::show('blogs', ['blogs' => $blogs]);
     }
 
     public function show($id)
     {
-        $blog = Database::table('blogs')->where('id', $id)->first();
+        $blog = DB::table('blogs')->where('id', $id)->first();
         return View::show('blog', ['blog' => $blog]);
     }
 }

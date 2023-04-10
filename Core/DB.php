@@ -2,7 +2,7 @@
 
 namespace PhpMvcFramework\Core;
 
-class Database
+class DB
 {
     public \PDO $db;
     public static string $table;
@@ -16,17 +16,17 @@ class Database
 
     /**
      * @param $name
-     * @return Database
+     * @return DB
      */
-    public static function table($name): Database
+    public static function table(string $name): DB
     {
         self::$table = $name;
         return new self();
     }
 
-    public function where($column, $value, $operations = '=')
+    public function where($column, $value, $operation = '=')
     {
-        $this->where[] = $column . ' ' . $operations . ' *' . $value . '*';
+        $this->where[] = $column . ' ' . $operation . ' "' . $value . '"';
         return $this;
     }
 
