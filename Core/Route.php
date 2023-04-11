@@ -72,7 +72,7 @@ class Route
         self::hasRoute();
     }
 
-    public static function hasRoute()
+    public static function hasRoute(): void
     {
         if(self::$hasRoute === false){
             die('404 page');
@@ -121,12 +121,12 @@ class Route
          self::$prefix = '';
      }
 
-     public function where($key, $pattern)
+     public function where($key, $pattern): void
      {
         self::$patterns[':' . $key] = '(' . $pattern . ')';
      }
 
-     public static function redirect($from, $to, $status = 301)
+     public static function redirect($from, $to, $status = 301): void
      {
         self::$routes['get'][$from] = [
             'redirect' => $to,
