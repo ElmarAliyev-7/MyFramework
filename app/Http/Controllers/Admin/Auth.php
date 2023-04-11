@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpMvcFramework\App\Http\Controllers\Admin;
+namespace PhpMvcFramework\app\Http\Controllers\Admin;
 
 use PhpMvcFramework\Core\View;
 

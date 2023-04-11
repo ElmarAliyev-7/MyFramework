@@ -62,7 +62,7 @@ class Route
                     } elseif (is_string($callback)) {
 
                         [$controllerName, $methodName] = explode('@', $callback);
-                        $controllerName = '\PhpMvcFramework\App\Http\Controllers\\'. $controllerName;
+                        $controllerName = '\PhpMvcFramework\app\Http\Controllers\\'. $controllerName;
                         $controller = new $controllerName();
                         echo call_user_func_array([$controller, $methodName], $params);
                     }
