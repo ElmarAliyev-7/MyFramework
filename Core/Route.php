@@ -2,7 +2,7 @@
 
 namespace PhpMvcFramework\Core;
 
-use PhpMvcFramework\Core\Helpers\Redirect;
+use PhpMvcFramework\App\Http\Helpers\Redirect;
 
 class Route
 {
@@ -62,7 +62,7 @@ class Route
                     } elseif (is_string($callback)) {
 
                         [$controllerName, $methodName] = explode('@', $callback);
-                        $controllerName = '\PhpMvcFramework\App\Controllers\\'. $controllerName;
+                        $controllerName = '\PhpMvcFramework\App\Http\Controllers\\'. $controllerName;
                         $controller = new $controllerName();
                         echo call_user_func_array([$controller, $methodName], $params);
                     }

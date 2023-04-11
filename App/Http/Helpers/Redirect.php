@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpMvcFramework\Core\Helpers;
+namespace PhpMvcFramework\App\Http\Helpers;
 
 class Redirect
 {

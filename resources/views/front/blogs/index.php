@@ -1,4 +1,4 @@
-<?=view('layouts.header'); ?>
+<?=view('front.layouts.header'); ?>
     <h1>Bloqlar</h1>
     <table class="table">
         <thead class="thead-dark">
@@ -20,4 +20,4 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-<?=view('layouts.footer'); ?>
+<?=view('front.layouts.footer'); ?>

@@ -13,7 +13,7 @@ class View
         extract($data);
         $viewName = str_replace('.', '/', $viewName);
         ob_start();
-        require dirname(__DIR__) . '/public/views/' . $viewName . '.php';
+        require dirname(__DIR__) . '/resources/views/' . $viewName . '.php';
         return ob_get_clean();
     }
 }

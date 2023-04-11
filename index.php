@@ -25,13 +25,13 @@ $dotenv->load();
 /*
  * Define the "web" routes for the application.
  */
-require __DIR__ . '/App/routes/web.php';
+require __DIR__ . '/routes/web.php';
 
 /*
  * Define the "api" routes for the application.
  */
 Route::prefix('/api');
-require __DIR__ . '/App/routes/api.php';
+require __DIR__ . '/routes/api.php';
 Route::$prefix = '';
 
 /*

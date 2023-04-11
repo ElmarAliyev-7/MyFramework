@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpMvcFramework\App\Controllers\Admin;
+namespace PhpMvcFramework\App\Http\Controllers\Admin;
 
 class Blog
 {

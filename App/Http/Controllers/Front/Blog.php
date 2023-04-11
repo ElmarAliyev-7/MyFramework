@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpMvcFramework\App\Controllers;
+namespace PhpMvcFramework\App\Http\Controllers\Front;
 
 use PhpMvcFramework\Core\View;
 use PhpMvcFramework\Core\DB;
