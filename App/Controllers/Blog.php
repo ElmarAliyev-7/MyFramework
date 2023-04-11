@@ -10,12 +10,12 @@ class Blog
     public function index()
     {
         $blogs = DB::table('blogs')->get();
-        return View::show('blogs', ['blogs' => $blogs]);
+        return View::show('front.blogs.index', ['blogs' => $blogs]);
     }
 
     public function show($id)
     {
         $blog = DB::table('blogs')->where('id', $id)->first();
-        return View::show('blog', ['blog' => $blog]);
+        return View::show('front.blogs.show', ['blog' => $blog]);
     }
 }
