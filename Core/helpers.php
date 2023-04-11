@@ -31,3 +31,12 @@ function url(string $name, array $params = []): string
 {
     return Route::url($name, $params);
 }
+
+/**
+ * @param string $path
+ * @return string
+ */
+function asset(string $path): string
+{
+    return getenv('APP_URL') . '/public' . $path;
+}
