@@ -13,7 +13,7 @@
         <?php foreach ($blogs as $blog) : ?>
             <tr>
                 <th scope="row"><?=$blog->id;?></th>
-                <td><a href="<?=url('blog', ['id' => $blog->id]);?>"><?=$blog->title;?></a></td>
+                <td><a href="<?=route('blog', ['id' => $blog->id]);?>"><?=$blog->title;?></a></td>
                 <td><?=$blog->description;?></td>
                 <td><?=$blog->status;?></td>
             </tr>

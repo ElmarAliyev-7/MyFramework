@@ -18,10 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?=url('home');?>">Home</a>
+                    <a class="nav-link active" aria-current="page" href="<?=route('home');?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=url('blogs');?>">Bloqlar</a>
+                    <a class="nav-link" href="<?=route('blogs');?>">Bloqlar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>

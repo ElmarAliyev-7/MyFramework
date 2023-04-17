@@ -23,16 +23,6 @@ function view(string $name, array $data = []): string
 }
 
 /**
- * @param string $name
- * @param array $params
- * @return string
- */
-function url(string $name, array $params = []): string
-{
-    return Route::url($name, $params);
-}
-
-/**
  * @param string $path
  * @return string
  */
