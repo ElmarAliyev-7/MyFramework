@@ -10,4 +10,9 @@ class Auth
     {
         return View::show('admin.auth.login');
     }
+
+    public function loginPost()
+    {
+        return $_REQUEST;
+    }
 }
