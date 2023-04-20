@@ -57,15 +57,13 @@ class Route
                     Redirect::to($props['redirect'], $props['status']);
                 } else {
                     $callback = $props['callback'];
-
                     if(is_callable($callback)) {
                         echo call_user_func_array($callback, $params);
                     } elseif (is_string($callback)) {
-
                         [$controllerName, $methodName] = explode('@', $callback);
                         $controllerName = '\PhpMvcFramework\app\Http\Controllers\\'. $controllerName;
                         $controller = new $controllerName();
-                        echo call_user_func_array([$controller, $methodName], $params);
+                        print_r(call_user_func_array([$controller, $methodName], $params));
                     }
                 }
             }

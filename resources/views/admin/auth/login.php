@@ -16,12 +16,11 @@
             <span><i class="icon icon-user"></i></span>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item"   placeholder="name | email" name="name_or_email">
+            <input type="text" name="username" class="form-control item" placeholder="username">
         </div>
         <div class="form-group">
-            <input name="password" type="password" class="form-control item" id="password" placeholder="Password">
+            <input type="password" name="password" class="form-control item" placeholder="password">
         </div>
-
         <div class="form-group">
             <button type="submit" class="btn btn-block create-account">Login</button>
         </div>
