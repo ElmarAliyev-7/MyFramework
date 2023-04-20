@@ -8,6 +8,6 @@ Route::get('/blogs/:id', 'Front\Blog@show')->name('blog');
 
 Route::prefix('/admin')->group( function () {
     Route::get('/?', 'Admin\Auth@login');
-    Route::post('/login', 'Admin\Auth@loginPost')->name('login-post');
+    Route::post('/login', 'Admin\Auth@loginPost');
     Route::get('/blogs','Admin\Blog@index');
 });

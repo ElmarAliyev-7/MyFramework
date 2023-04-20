@@ -31,14 +31,12 @@ class Route
     /**
      * @param string $path
      * @param $callback
-     * @return Route
      */
-    public static function post(string $path, $callback): Route
+    public static function post(string $path, $callback): void
     {
-        self::$routes['post'][self::$prefix . $path] = [
+        self::$routes['post'][$path] = [
             'callback' => $callback
         ];
-        return new self();
     }
 
     public static function dispatch()
